@@ -1,0 +1,114 @@
+.profile__page {
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: sans-serif;
+}
+
+.profile__header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 0 250px;
+    margin:50px 0 50px 0px;
+}
+.profile__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    flex-direction: row;
+    margin-left: 30px;
+}
+.profile__username {
+    margin-right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.profile__image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    /* サイズがつぶれないようにする */
+}
+.profile__image img {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    object-fit: cover;
+    display: block;
+}
+
+.edit-profile-button {
+    border: 1px solid #ff4b4b;
+    background-color: white;
+    color: #ff4b4b;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.edit-profile-button:hover {
+    background-color: #ffeaea;
+}
+
+.profile__tabs {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    padding-left: 140px;
+}
+
+.profile__tabs .tab {
+    color: #444;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+
+.profile__tabs .active {
+    color: red;
+    padding-bottom: 2px;
+}
+
+.item__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    column-gap: 50px;
+    row-gap: 30px;
+}
+
+.item__card {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top:20px ;
+    text-align: center;
+}
+.item__image {
+    background-color: #ccc;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.item__image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.item__name {
+    font-size: 20px;
+    text-align: left;
+}

@@ -21,24 +21,27 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'zip_code',
+        'address',
+        'building',
     ];
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function favorites()
+    {
+        return $this->belongsToMany(Item::class, 'favorites');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
