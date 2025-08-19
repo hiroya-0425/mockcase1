@@ -31,6 +31,7 @@ class ItemRequest extends FormRequest
             'condition' => 'required|string',
             'category_id' => 'required|array',
             'category_id.*' => 'exists:categories,id',
+            'brand'       => 'nullable|string|max:255',
         ];
     }
 }

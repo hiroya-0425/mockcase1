@@ -14,6 +14,9 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Hash;
 
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+use App\Http\Requests\LoginRequest as CustomLoginRequest;
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -51,5 +54,9 @@ class FortifyServiceProvider extends ServiceProvider
                 'email' => ['ログイン情報が登録されていません。'],
             ]);
         });
+        $this->app->bind(
+            FortifyLoginRequest::class,
+            CustomLoginRequest::class
+        );
     }
 }

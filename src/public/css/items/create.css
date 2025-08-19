@@ -1,0 +1,252 @@
+.item__create {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+    background-color: #fff;
+}
+
+.item__create-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.item-create__form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form__label {
+    font-weight: bold;
+}
+
+.form__image-upload {
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.image__button {
+    background-color: #fff;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.form__category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.category__button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.category__button input[type="checkbox"] {
+    display: none;
+}
+
+.category__button span {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid #ff5c5c;
+    border-radius: 20px;
+    color: #ff5c5c;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category__button input[type="checkbox"]:checked+span {
+    background-color: #ff5c5c;
+    color: #fff;
+}
+
+.form__select,
+.form__input,
+.form__textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.form__textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form__button {
+    text-align: center;
+}
+
+.form__submit {
+    background-color: #ff5c5c;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form__error {
+    color: red;
+    font-size: 13px;
+}
+
+.form__section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+}
+.form__price-wrapper {
+    position: relative;
+}
+
+.yen-symbol {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+}
+
+.price-input {
+    padding-left: 25px;
+}
+
+/* =========================
+    PCワイド (1400–1540px)
+   ========================= */
+@media screen and (min-width:1400px) and (max-width:1540px) {
+    .item__create {
+        max-width: 760px;
+        padding: 48px 28px;
+    }
+
+    .item__create-title {
+        font-size: 22px;
+        margin-bottom: 44px;
+    }
+
+    .form__section-title {
+        font-size: 22px;
+    }
+
+    .form__image-upload {
+        padding: 56px 24px;
+    }
+
+    .form__category-buttons {
+        gap: 18px;
+    }
+
+    .category__button span {
+        padding: 8px 18px;
+        font-size: 15px;
+        border-radius: 22px;
+    }
+
+    .form__select,
+    .form__input,
+    .form__textarea {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .yen-symbol {
+        left: 12px;
+        top: 20px;
+        transform: translateY(-50%);
+    }
+
+    .price-input {
+        padding-left: 32px;
+    }
+}
+
+/* =========================
+    タブレット (768–850px)
+     ========================= */
+@media screen and (min-width:768px) and (max-width:850px) {
+    .item__create {
+        max-width: 680px;
+        padding: 32px 40px;
+    }
+
+    .item__create-title {
+        font-size: 21px;
+        margin-bottom: 36px;
+    }
+
+    .form__section-title {
+        font-size: 20px;
+    }
+
+    .form__image-upload {
+        padding: 36px 16px;
+    }
+
+    .form__category-buttons {
+        gap: 12px;
+    }
+
+    .category__button span {
+        padding: 6px 14px;
+        font-size: 13px;
+        border-radius: 18px;
+    }
+
+    .form__select,
+    .form__input {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .form__textarea {
+        height: 140px;
+        font-size: 15px;
+    }
+
+    .form__submit {
+        width: 100%;
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+
+    .yen-symbol {
+        left: 12px;
+        top: 20px;
+        transform: translateY(-50%);
+    }
+
+    .price-input {
+        padding-left: 34px;
+    } }

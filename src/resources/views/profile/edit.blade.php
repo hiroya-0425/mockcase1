@@ -6,19 +6,18 @@
         <h2>プロフィール設定</h2>
     </div>
     <div class="profile__edit-form-area">
-        <form class="form" action="" method="POST">
+        <form class="form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
             <div class="form__image-section">
                 <div class="form__image-preview">
-                    <!-- ここに画像プレビューが入る -->
-                    <img src="{{ $user->image_url ?? '/default-profile.png' }}" alt="プロフィール画像">
+                    <img id="preview" src="{{ $user->image ? asset('storage/' . $user->image) : asset('/default-profile.png') }}" alt="プロフィール画像">
                 </div>
                 <div class="form__image-upload">
                     <label class="button is-outline">
                         画像を選択する
-                        <input type="file" name="image" hidden>
+                        <input type="file" name="image" hidden onchange="previewImage(event)">
                     </label>
                 </div>
             </div>
@@ -61,4 +60,13 @@
         </form>
     </div>
 </main>
+<script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            document.getElementById('preview').src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection

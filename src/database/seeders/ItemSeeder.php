@@ -22,7 +22,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
                 'condition' => '良好',
                 'color' => 'ブラック',
-                'user_id' => 1, // ダミーユーザーID（存在するIDに合わせて）
+                'user_id' => 2, // ダミーユーザーID（存在するIDに合わせて）
             ],
             [
                 'name' => 'HDD',
@@ -32,7 +32,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
                 'condition' => '目立った傷や汚れなし',
                 'color' => '黒',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => '玉ねぎ3束',
@@ -42,7 +42,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
                 'condition' => 'やや傷や汚れあり',
                 'color' => '',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => '革靴',
@@ -52,7 +52,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
                 'condition' => '状態が悪い',
                 'color' => '黒',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => 'ノートPC',
@@ -62,7 +62,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
                 'condition' => '良好',
                 'color' => 'シルバー',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => 'マイク',
@@ -72,7 +72,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
                 'condition' => '目立った傷や汚れなし',
                 'color' => '黒',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => 'ショルダーバッグ',
@@ -82,7 +82,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
                 'condition' => 'やや傷や汚れあり',
                 'color' => '赤',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => 'タンブラー',
@@ -92,7 +92,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
                 'condition' => '状態が悪い',
                 'color' => '黒',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => 'コーヒーミル',
@@ -102,7 +102,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
                 'condition' => '良好',
                 'color' => '茶色',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'name' => 'メイクセット',
@@ -112,7 +112,7 @@ class ItemSeeder extends Seeder
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
                 'condition' => '目立った傷や汚れなし',
                 'color' => '黒',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
 
 

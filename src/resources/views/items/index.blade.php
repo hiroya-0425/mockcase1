@@ -21,7 +21,11 @@
 
             <a href="{{ route('items.showItem', $item->id) }}" class="item__card">
                 <div class="item__image" style="position: relative;">
+                    @if(Str::startsWith($item->image, 'http'))
                     <img src="{{ $item->image }}" alt="商品画像">
+                    @else
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
+                    @endif
                     @if ($item->is_sold)
                     <span class="sold__badge">Sold</span>
                     @endif

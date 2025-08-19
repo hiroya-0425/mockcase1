@@ -3,15 +3,17 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #000;
-    /* 黒背景 */
     padding: 10px 20px;
     color: #fff;
 }
 
-.header__logo h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
+.header__logo {
+    margin-left: 20px;
+}
+
+.logo__image {
+    height: 25px;
+    display: block;
 }
 
 .header__search-form {
@@ -21,31 +23,56 @@ header {
 
 .header__search-form input[type="text"] {
     width: 100%;
-    max-width: 300px;
-    padding: 8px;
+    max-width: 500px;
+    padding: 8px 12px;
     border: none;
     border-radius: 4px;
     font-size: 14px;
+    margin-left: 40px;
 }
 
 .header__nav-buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
+
 }
 
-.nav-button {
+.nav__button {
     background-color: transparent;
     color: #fff;
     border: none;
     cursor: pointer;
-    font-size: 14px;
-    padding: 8px 12px;
+    font-size: 18px;
+    padding: 6px 10px;
+    text-decoration: none;
 }
 
-.nav-button.sell {
+.nav__button.sell {
     background-color: #fff;
     color: #000;
     border-radius: 4px;
     font-weight: bold;
+}
+.header__nav-buttons form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width:768px) and (max-width:850px) {
+    .logo__image {
+        height: 15px;
+    }
+
+    .header__search-form input[type="text"] {
+        max-width: 250px;
+        margin-left: 10px;
+    }
+
+    .nav__button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
 }

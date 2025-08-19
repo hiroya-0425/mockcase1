@@ -16,23 +16,29 @@ class ProfileController extends Controller
     }
     public function update(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:20'],
+        $validated = $request->validate([
+            'name'     => ['required', 'string', 'max:20'],
             'zip_code' => ['required', 'string'],
-            'address' => ['required', 'string'],
+            'address'  => ['required', 'string'],
             'building' => ['nullable', 'string'],
+            'image'    => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'], // 5MB & webp許可
         ]);
 
         $user = Auth::user();
 
-        $user->update([
-            'name' => $request->name,
-            'zip_code' => $request->zip_code,
-            'address' => $request->address,
-            'building' => $request->building,
-        ]);
+        if ($request->hasFile('image')) {
+            if ($user->image && \Storage::disk('public')->exists($user->image)) {
+                \Storage::disk('public')->delete($user->image);
+            }
+            $validated['image'] = $request->file('image')->store('profile', 'public');
+        }
 
-        return redirect('/mypage');
+        $user->update($validated);
+
+        // 編集画面に戻って “保存後の画像” をそのまま表示したいなら edit に戻る
+        return redirect()->route('profile.show');
+        // マイページに飛ばしたいなら:
+        // return redirect('/mypage')->with('success','プロフィールを更新しました');
     }
 
     public function showProfile()

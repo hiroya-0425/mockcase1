@@ -9,7 +9,7 @@
     <div class="profile__page">
         <div class="profile__header">
             <div class="profile__image">
-                <img src="{{ asset('images/default-profile.png') }}" alt="プロフィール画像">
+                <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('/default-profile.png') }}" alt="プロフィール画像">
             </div>
 
             <div class="profile__info">
@@ -27,7 +27,11 @@
             @foreach ($items as $item)
             <div class="item__card">
                 <div class="item__image">
-                    <img src="{{ $item->image}}" alt="商品画像" >
+                    @if(Str::startsWith($item->image, 'http'))
+                    <img src="{{ $item->image }}" alt="商品画像">
+                    @else
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
+                    @endif
                 </div>
                 <div class="item__name">{{ $item->name }}</div>
             </div>

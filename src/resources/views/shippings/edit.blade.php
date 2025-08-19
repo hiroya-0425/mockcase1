@@ -10,17 +10,23 @@
 
         <div class="form__group">
             <label for="zip_code">郵便番号</label>
-            <input type="text" name="zip_code" value="{{ old('zip_code', $user->zip_code) }}">
+            <input type="text" name="zip_code"
+                value="{{ old('zip_code', $shipping['zip_code'] ?? $user->zip_code) }}">
+            @error('zip_code')<div class="form__error">{{ $message }}</div>@enderror
         </div>
 
         <div class="form__group">
             <label for="address">住所</label>
-            <input type="text" name="address" value="{{ old('address', $user->address) }}">
+            <input type="text" name="address"
+                value="{{ old('address', $shipping['address'] ?? $user->address) }}">
+            @error('address')<div class="form__error">{{ $message }}</div>@enderror
         </div>
 
         <div class="form__group">
             <label for="building">建物名</label>
-            <input type="text" name="building" value="{{ old('building', $user->building) }}">
+            <input type="text" name="building"
+                value="{{ old('building', $shipping['building'] ?? $user->building) }}">
+            @error('building')<div class="form__error">{{ $message }}</div>@enderror
         </div>
 
         <button type="submit" class="form__submit">更新する</button>

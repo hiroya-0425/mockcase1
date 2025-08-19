@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>COACHTECHフリマ</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <!-- <link rel="stylesheet" href="{{ asset('css/common.css') }}" /> -->
+
     <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}" />
 </head>
 
@@ -22,7 +22,7 @@
         </div>
         <div class="register__form-content">
             <div class="register__form-inner">
-                <form class="form" action="/register" method="post">
+                <form class="form" action="{{ route('register.store') }}" method="post">
                     @csrf
                     <div class="form__group">
                         <div class="form__group-title">
@@ -89,10 +89,9 @@
                     </div>
                 </form>
                 <div class="login__link">
-                    <a class="login__button-submit" href="/login">ログインはこちら</a>
+                    <a class="login__button-submit" href="{{ route('login') }}">ログインはこちら</a>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 </body>

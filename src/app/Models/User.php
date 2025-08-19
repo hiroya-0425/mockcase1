@@ -24,6 +24,7 @@ class User extends Authenticatable
         'zip_code',
         'address',
         'building',
+        'image',
     ];
     public function items()
     {

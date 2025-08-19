@@ -15,20 +15,20 @@
     <header>
         <div class="header__logo">
             <a href="{{ route('items.showIndex') }}">
-                <img src="{{ asset('images/logo.svg') }}" alt="COACHTECHロゴ" class="logo-image">
+                <img src="{{ asset('images/logo.svg') }}" alt="COACHTECHロゴ" class="logo__image">
             </a>
         </div>
-        <form class="header__search-form">
+        <form class="header__search-form" action="{{ route('items.showIndex') }}" method="GET">
             @csrf
             <input type="text" value="{{ request('search') }}" name="search" class="header__search-input" placeholder="なにをお探しですか？">
         </form>
         <div class="header__nav-buttons">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="nav-button">ログアウト</button>
+                <button type="submit" class="nav__button">ログアウト</button>
             </form>
-            <a href="/mypage" class="nav-button">マイページ</a>
-            <a href="/sell" class="nav-button sell">出品</a>
+            <a href="/mypage" class="nav__button">マイページ</a>
+            <a href="/sell" class="nav__button sell">出品</a>
         </div>
     </header>
 

@@ -12,14 +12,12 @@
     margin: 0 auto;
     align-items: flex-start;
     flex-wrap: wrap;
-    /* レスポンシブ対策 */
 }
 .item-detail__image {
     position: relative;
     flex: 1 1 45%;
     max-width: 400px;
     aspect-ratio: 1 / 1;
-    /* 正方形を保つ */
     background-color: #eee;
     display: flex;
     align-items: center;
@@ -36,12 +34,13 @@
     display: block;
 }
 
-/* 画像が設定されていない場合の対応 */
 .item-detail__image img[src=""],
 .item-detail__image img:not([src]) {
     display: none;
 }
-
+.item-detail__image.has-image::before {
+    content: none;
+}
 .item-detail__image::before {
     content: "商品画像";
     font-size: 16px;
@@ -59,6 +58,16 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+.item-detail__color {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.color{
+    margin-left: 10px;
+}
+
+
 
 .item-detail__brand {
     font-size: 14px;
@@ -79,17 +88,23 @@
 .favorite-button {
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     color: inherit;
-    /* 継承にしておく */
     display: flex;
     align-items: center;
     gap: 4px;
+    padding: 0;
+    line-height: 1;
 }
 
 .favorite-icon {
     color: #888;
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: middle;
+    position: relative;
+        top: 9px;
 }
 
 .favorite-button.favorited .favorite-icon {
@@ -99,12 +114,28 @@
 .favorite-count {
     color: #000;
     font-size: 16px;
+    line-height: 1;
+    position: relative;
+        top: 9px;
 }
 
 .comment-count {
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    color: #000;
+    line-height: 1;
 }
-
+.comment-icon {
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: middle;
+}
+.comment-number {
+    font-size: 16px;
+    line-height: 1;
+}
 .order-confirm__submit {
     background-color: #ff5c5c;
     color: white;
@@ -142,15 +173,20 @@
     margin-bottom: 8px;
 }
 
-.category,
-.condition,
-.color {
+.category
+{
     display: inline-block;
     background-color: #eee;
     padding: 2px 8px;
     border-radius: 12px;
-    margin-left: 5px;
-    font-size: 12px;
+    margin-left: 15px;
+    font-size: 15px;
+}
+.condition{
+    display: inline-block;
+    padding: 2px 8px;
+    margin-left: 15px;
+    font-size: 15px;
 }
 
 textarea[name="body"] {
@@ -181,3 +217,196 @@ textarea[name="body"] {
     font-size: 14px;
     z-index: 1;
 }
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment__item {
+    margin-bottom: 20px;
+}
+
+.comment__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.comment__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.comment__username {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.comment__text {
+    background-color: #e6e6e6;
+    padding: 10px 14px;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-left: 60px;
+}
+.comment-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 120px;
+    box-sizing: border-box;
+}
+
+.comment-submit {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.comment-submit:hover {
+    background-color: #ff4b4b;
+}
+/* =========================
+    PC (1400–1540px)
+   ========================= */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .item-detail-page {
+        padding: 48px 72px;
+    }
+
+    .item-detail__container {
+        max-width: 1200px;
+        gap: 56px;
+    }
+
+    .item-detail__image {
+        max-width: 460px;
+    }
+
+    .item-detail__name {
+        font-size: 28px;
+    }
+
+    .item-detail__price {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+}
+
+/* =========================
+    タブレット (768–850px)
+     ========================= */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .item-detail-page {
+        padding: 24px 40px;
+    }
+
+    .item-detail__container {
+        max-width: 760px;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .item-detail__image {
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 1 / 1;
+    }
+
+    .item-detail__info {
+        width: 100%;
+        flex: unset;
+    }
+
+    .item-detail__name {
+        font-size: 22px;
+    }
+
+    .item-detail__brand {
+        font-size: 13px;
+    }
+
+    .item-detail__price {
+        font-size: 22px;
+    }
+
+    .item-detail__counts {
+        gap: 16px;
+        margin: 4px 0 12px;
+    }
+
+
+    .favorite-icon,
+    .favorite-count {
+        top: 0;
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    .comment-icon {
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    .comment-number {
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    .order-confirm__submit {
+        width: 100%;
+    }
+
+    .item-detail__meta {
+        font-size: 13px;
+    }
+
+    .category,
+    .color,
+    .condition {
+        margin-left: 10px;
+        font-size: 13px;
+    }
+
+    .comment__avatar {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .comment__username {
+        font-size: 15px;
+    }
+
+    .comment__text {
+        margin-left: 52px;
+        font-size: 13px;
+    } }

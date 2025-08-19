@@ -100,4 +100,86 @@
 }
 
 .form__submit:hover {
-    background-color: #ff4b4b; }
+    background-color: #ff4b4b;
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .profile__edit {
+        max-width: 500px;
+        padding: 0 40px;
+    }
+
+    .profile__edit-header h2 {
+        font-size: 26px;
+    }
+
+    .profile__edit-form-area .form {
+        gap: 24px;
+    }
+
+    .form__image-section {
+        gap: 32px;
+        margin-bottom: 40px;
+    }
+
+    .form__image-preview img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .form__label {
+        font-size: 20px;
+    }
+
+    .form__submit {
+        max-width: 360px;
+        margin-inline: auto;
+    }
+}
+
+/* =========================
+    タブレット (768–850px)
+========================= */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .profile__edit {
+        max-width: 300px;
+        padding: 0 24px;
+    }
+
+    .profile__edit-header h2 {
+        font-size: 22px;
+    }
+
+    .profile__edit-form-area .form {
+        gap: 18px;
+    }
+
+    .form__image-section {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .form__image-preview img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .form__image-upload label {
+        margin-left: 0;
+    }
+
+    .form__label {
+        font-size: 16px;
+    }
+
+    .form__input {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .form__submit {
+        width: 100%;
+    }
+}

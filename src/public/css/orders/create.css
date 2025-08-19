@@ -103,7 +103,7 @@
     border-bottom: 1px solid #000;
 }
 .order__confirm-summary th {
-    width: 60%;
+    width: 55%;
     font-size: 20px;
     padding: 30px 0px;
     text-align: center;
@@ -113,7 +113,7 @@
 }
 
 .order__confirm-summary td {
-    width: 40%;
+    width: 45%;
     font-size: 25px;
     text-align: center;
     padding: 30px 10px 30px 5px;
@@ -140,7 +140,6 @@
     padding-bottom: 30px;
     border-bottom: 1px solid #000;
     position: relative;
-    
 }
 .order__confirm-address h3 {
     font-weight: bold;
@@ -152,7 +151,6 @@
     margin: 3px 0;
     margin-left: 70px;
     font-size: 16px;
-    
 }
 
 .order__confirm-address a {
@@ -162,5 +160,120 @@
     text-decoration: none;
     top: 0;
     right: 0;
-    
 }
+
+/* =========================
+    PC (1400–1540px)
+   ========================= */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .order__confirm {
+        padding: 72px 80px;
+    }
+
+    .order__confirm-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 56px;
+    }
+
+    .order__confirm-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .order__confirm-right {
+        width: 34%;
+    }
+
+    .payment_method__section select {
+        width: 240px;
+    }
+
+    .order__confirm-summary th {
+        font-size: 22px;
+        padding: 28px 8px;
+    }
+
+    .order__confirm-summary td {
+        font-size: 28px;
+        padding: 28px 8px;
+    }
+}
+
+/* =========================
+    Tablet (768–850px)
+     ========================= */
+@media (min-width: 768px) and (max-width: 850px) {
+    .order__confirm {
+        padding: 32px 24px;
+    }
+
+    .order__confirm-container {
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .order__confirm-main {
+        gap: 12px;
+    }
+
+    .order__confirm-product {
+        gap: 16px;
+    }
+
+    .order__confirm-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .order__confirm-name h2 {
+        font-size: 18px;
+    }
+
+    .order__confirm-name p {
+        font-size: 16px;
+    }
+
+    .payment_method__section label {
+        margin-left: 0;
+    }
+
+    .payment_method__section select {
+        margin-left: 0;
+        margin-bottom: 24px;
+        width: 60%;
+        max-width: 320px;
+    }
+
+    .order__confirm-address {
+        padding-bottom: 20px;
+    }
+
+    .order__confirm-address a {
+        top: 8px;
+        right: 8px;
+    }
+    .order__confirm-summary {
+        max-width: 360px;
+        margin: 0 auto 20px auto;
+    }
+
+    .order__confirm-right {
+        width: 100%;
+    }
+
+    .order__confirm-summary th {
+        font-size: 16px;
+        padding: 18px 6px;
+    }
+
+    .order__confirm-summary td {
+        font-size: 20px;
+        padding: 18px 6px;
+    }
+
+    .order__confirm-submit {
+        width: 100%;
+        padding: 12px;
+    } }
