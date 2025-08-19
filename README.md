@@ -74,7 +74,7 @@ php artisan view:clear
 
 ### 管理者ユーザー（代表アカウント）
 
-- email: hiroya-ydh@outlook.jp
+- email: hiroya-ydh@example.jp
 - password: hirohiroya
 
 ### 一般ユーザー

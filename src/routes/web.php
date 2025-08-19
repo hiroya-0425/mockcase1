@@ -56,18 +56,10 @@ Route::middleware(['auth'])->group(function () {
     // 商品出品
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 
-    // 成功/キャンセル（Stripe から戻すURL）
-    Route::get('/checkout/{order}', [CheckoutController::class, 'start'])->name('checkout.start');
-    Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-    Route::get('/checkout/cancel',  [CheckoutController::class, 'cancel'])->name('checkout.cancel');
-
-    // Route::get('/purchase/{item}/pending', [OrdersController::class, 'pending'])->name('orders.pending');
-    // Route::post('/purchase/{item}/mock-complete', [OrdersController::class, 'mockComplete'])->name('orders.mockComplete');
-    // Route::post('/purchase/{item}/checkout', [OrdersController::class, 'checkout'])->name('orders.checkout');
 
     // お気に入り
     Route::post('/items/{item}/favorite', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
     // コメント
     Route::post('/items/{item}/comment', [CommentController::class, 'store'])->name('comments.store');
-    
+
 });
