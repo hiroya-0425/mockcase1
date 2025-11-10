@@ -1,19 +1,24 @@
 # COACHTECH フリマ（Laravel）
 
 ## 概要
+このアプリは、ユーザー同士で商品を出品・購入・取引・評価できるフリマアプリです。
+Laravel × MySQL × Docker を用い、Fortify認証・プロフィール機能・画像アップロード・メッセージ機能・取引評価まで実装しています。
 
-Laravel + MySQL + Docker で動くフリマアプリです。  
-ユーザー登録/ログイン（Fortify）、出品、購入、配送先設定、プロフィール画像アップロード（Storage）などを実装。
+- ユーザーは「出品」「購入」「取引メッセージ」「取引完了・評価」まで一連の流れを体験可能
+- 取引ステータス管理や通知バッジなど、実際のアプリに近い設計を意識
 
 ## 使用技術
 
-- PHP 8.4.6 / Laravel 8.83.8
-- MySQL 8.0.26
-- Blade / CSS
-- Laravel Fortify（認証）
-- Stripe（決済・予定/対応中）
-- Docker（nginx, php-fpm, mysql, phpmyadmin）
-- Storage（`storage/app/public` → `public/storage`）
+| 項目 | 内容 |
+|------|------|
+| 言語 / FW | PHP 8.4.6 / Laravel 8.83.8 |
+| DB | MySQL 8.0.26 |
+| フロント | Blade / CSS |
+| 認証 | Laravel Fortify（メール認証対応） |
+| 決済 | Stripe（予定・対応中） |
+| メール送信テスト | MailHog（Docker環境で動作） |
+| 環境構築 | Docker（nginx, php-fpm, mysql, phpmyadmin, mailhog） |
+| ファイル保存 | Storage（`storage/app/public` → `public/storage`） |
 
 ## 環境構築
 
@@ -58,6 +63,7 @@ php artisan db:seed
 
 - アプリ: http://localhost
 - phpMyAdmin: http://localhost:8080
+- MailHog（メール確認用）: http://localhost:8025
 
 # キャッシュクリア
 
@@ -73,14 +79,22 @@ php artisan view:clear
 ※「管理者ユーザー」は権限付きアカウントではなく、代表的なログイン用アカウントです。
 
 ### 管理者ユーザー（代表アカウント）
-
+- name : 「代居大哉」
+- 商品01~05を所持（設計書の商品ID）
 - email: hiroya-ydh@example.jp
 - password: hirohiroya
 
 ### 一般ユーザー
-
+- name : 「須藤巧」
+- 商品06~10を所持（設計書の商品ID）
 - email: sudou@example.jp
-- password: sudoutakumi
+- password: 12345678
+
+
+- name : 「山田太郎」
+- 商品の所持なし
+- email   => yamada@example.jp'
+- password =>12345678
 
 # ディレクトリ構成（主要）
 
@@ -90,11 +104,20 @@ public/ # 公開ディレクトリ（/storage シンボリックリンク有）
 storage/ # アップロード保存先（app/public/...）
 database/ # マイグレーション/シーダー/ファクトリ
 
-# 補足
+# 追加実装機能
+- 登録時のバリデーションは、LaravelのFormRequestクラス（RegisterRequest）を使用しており、
+emailフィールドには'email'ルールを適用しています。
+HTML側のtype="email"も併用していますが、サーバーサイドではLaravelのValidatorが機能しています。
 
-このアプリケーションは「フリマアプリ」を想定して作成されています。
-出品から購入、配送先登録まで一連の流れを体験できるよう設計されています。
-プロフィール画像のアップロードや認証（Fortify）など、実際の開発案件に近い構成になっています。
+- 新規会員登録時のメール認証：Fortify認証後、メールリンクを経由して本登録完了
+
+- itemテーブルに status カラム追加 : 「購入前 / 取引中 / 購入後」を判別し、画面制御
+
+- trade_messages テーブル作成 : 取引ごとのチャット履歴を保存・未読管理可能
+
+- ratings テーブル作成 : 取引完了後の評価（★1〜5）機能
+
+- メッセージ欄の固定 : メッセージ一覧をスクロール可能にし、入力欄を常に下部固定
 
 ## ER 図
 

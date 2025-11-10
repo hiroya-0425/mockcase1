@@ -11,14 +11,11 @@ class ShippingController extends Controller
     public function edit(Item $item)
     {
         $user = Auth::user();
-
-        // セッションに一時保存があればそれを優先、なければユーザー情報で初期化
         $shipping = session('checkout.shipping') ?? [
             'zip_code' => $user->zip_code,
             'address'  => $user->address,
             'building' => $user->building,
         ];
-
         return view('shippings.edit', compact('user', 'item', 'shipping'));
     }
 
@@ -29,10 +26,7 @@ class ShippingController extends Controller
             'address'  => 'required|string',
             'building' => 'nullable|string',
         ]);
-
-        // ユーザーは更新せず、セッションにだけ保存
         session(['checkout.shipping' => $validated]);
-
         return redirect()->route('orders.create', ['item' => $item->id])
             ->with('success', '配送先を更新しました（マイページ住所は変更していません）');
     }

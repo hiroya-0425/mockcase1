@@ -98,7 +98,11 @@
     justify-content: center;
     border-radius: 4px;
     overflow: hidden;
+    position: relative;
+
 }
+
+
 .item__image img {
     width: 100%;
     height: 300px;
@@ -109,6 +113,61 @@
 .item__name {
     font-size: 20px;
     text-align: left;
+}
+
+.sold__badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+.tab__badge {
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.message__badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    line-height: 1;
+    z-index: 2;
+}
+.profile__rating {
+    font-size: 20px;
+    margin-top: 8px;
+    color: #f5c518;
+    /* 星の色 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile__rating .rating__value {
+    font-size: 16px;
+    color: #555;
+}
+
+.no-rating {
+    color: #aaa;
+    font-size: 16px;
 }
 
 /* === PC対応 (1400〜1540px) === */

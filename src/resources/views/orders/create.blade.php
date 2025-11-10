@@ -18,7 +18,6 @@
                         <p>¥{{ number_format($item->price) }}</p>
                     </div>
                 </div>
-
                 {{-- 支払い方法 --}}
                 <div class="payment_method__section">
                     <label for="payment_method">支払い方法</label>
@@ -28,7 +27,6 @@
                         <option value="カード払い">カード払い</option>
                     </select>
                 </div>
-
                 {{-- 配送先 --}}
                 <div class="order__confirm-address">
                     <h3>配送先</h3>
@@ -44,8 +42,6 @@
                     <a href="{{ route('shippings.edit', ['item' => $item->id]) }}">変更する</a>
                 </div>
             </div>
-
-
             {{-- 右カラム：サマリーと購入ボタン --}}
             <div class="order__confirm-right">
                 <div class="order__confirm-summary">
@@ -60,7 +56,6 @@
                         </tr>
                     </table>
                 </div>
-
                 <input type="hidden" name="item_id" value="{{ $item->id }}">
                 <button type="submit" class="order__confirm-submit">購入する</button>
             </div>
@@ -75,8 +70,5 @@
         display.textContent = selectedText ? selectedText : '未選択';
     }
 </script>
-
-
-
 </main>
 @endsection

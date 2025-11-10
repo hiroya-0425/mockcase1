@@ -22,11 +22,11 @@
         </div>
         <div class="register__form-content">
             <div class="register__form-inner">
-                <form class="form" action="{{ route('register.store') }}" method="post">
+                <form class="form" action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="form__group">
                         <div class="form__group-title">
-                            <span class="form__label-item">お名前</span>
+                            <span class="form__label-item">ユーザー名</span>
                         </div>
                         <div class="form__group-content">
                             <div class="form__input-text">
@@ -95,5 +95,4 @@
         </div>
     </main>
 </body>
-
 </html>

@@ -28,11 +28,9 @@
             <a href="/sell" class="nav__button sell">出品</a>
         </div>
     </header>
-
     {{-- 各ページごとの中身 --}}
     <main>
         @yield('content')
     </main>
 </body>
-
 </html>

@@ -29,4 +29,13 @@ class Order extends Model
     {
         return $this->hasOne(Shipping::class);
     }
+
+    public function tradeMessages()
+    {
+        return $this->hasMany(TradeMessage::class);
+    }
+    public function ratings()
+    {
+        return $this->hasMany(\App\Models\Rating::class);
+    }
 }

@@ -13,12 +13,10 @@
             @else
             <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
             @endif
-
             @if ($item->is_sold)
             <span class="sold-badge">Sold</span>
             @endif
         </div>
-
         {{-- 右カラム：商品情報 --}}
         <div class="item-detail__info">
             {{-- 商品名とブランド --}}
@@ -26,10 +24,8 @@
             @if($item->brand)
             <div class="item-detail__brand">{{ $item->brand }}</div>
             @endif
-
             {{-- 価格 --}}
             <div class="item-detail__price">¥{{ number_format($item->price) }}（税込）</div>
-
             {{-- お気に入り数・コメント数 --}}
             <div class="item-detail__counts">
                 {{-- いいねボタン --}}
@@ -41,14 +37,12 @@
                         <span class="favorite-count">{{ $item->favorites->count() }}</span>
                     </button>
                 </form>
-
                 {{-- コメント表示 --}}
                 <div class="comment-count">
                     <span class="comment-icon">💬</span>
                     <span class="comment-number">{{ $item->messages->count() }}</span>
                 </div>
             </div>
-
             {{-- 購入ボタン --}}
             <form action="{{ route('orders.create', ['item' => $item->id]) }}" method="GET">
                 @csrf
@@ -60,9 +54,7 @@
                 <button type="submit" class="order-confirm__submit">購入する</button>
                 @endif
             </form>
-
             {{-- 商品説明 --}}
-
             <section class="item-detail__section">
                 <h2 class="section-title">商品説明</h2>
                 @if($item->color)
@@ -72,10 +64,7 @@
                 </div>
                 @endif
                 <p class="item-detail__description">{{ $item->description }}</p>
-
-
             </section>
-
             {{-- 商品の情報 --}}
             <section class="item-detail__section">
                 <h2 class="section-title">商品の情報</h2>
@@ -87,15 +76,12 @@
                         @endforeach
                     </li>
                     @endif
-
                     <li><strong>商品の状態</strong><span class="condition">{{ $item->condition }}</span></li>
                     {{-- カラーは商品説明へ移動済み --}}
                 </ul>
             </section>
-
             {{-- コメント表示 --}}
             <h3>コメント（{{ $item->messages->count() }}件）</h3>
-
             <ul class="comment-list">
                 @foreach ($item->messages as $message)
                 <li class="comment__item">
@@ -109,7 +95,6 @@
                 </li>
                 @endforeach
             </ul>
-
             {{-- コメント投稿フォーム --}}
             @auth
             <h3>商品へのコメント</h3>

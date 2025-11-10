@@ -20,6 +20,7 @@ class CreateShippingsTable extends Migration
             $table->string('zip_code');
             $table->string('address');
             $table->string('building')->nullable();
+            $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
         });

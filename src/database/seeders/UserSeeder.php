@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'address'  => '東京都千代田区千代田1-1',
             'building' => 'テストビル101',
             'image'    => null,
+            'email_verified_at' => now(),
         ]);
 
         // id=2 のユーザー
@@ -36,10 +37,23 @@ class UserSeeder extends Seeder
             'address'  => '東京都渋谷区神宮前1-1-1',
             'building' => 'テストマンション202',
             'image'    => null,
+            'email_verified_at' => now(),
+        ]);
+
+        // id=3 のユーザー
+        User::create([
+            'id'       => 3,
+            'name'     => '山田太郎',
+            'email'    => 'yamada@example.jp',
+            'password' => Hash::make('12345678'),
+            'zip_code' => '150-0001',
+            'address'  => '福岡県福岡市中央区警固1-1',
+            'building' => 'テストマンション608',
+            'image'    => null,
+            'email_verified_at' => now(),
         ]);
 
 
-        User::factory()->count(10)->create();
     }
 
 }

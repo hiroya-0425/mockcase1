@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUpdatedAtToOrdersTable extends Migration
+class AddImageToTradeMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class AddUpdatedAtToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            if (!Schema::hasColumn('orders', 'updated_at')) {
-                $table->timestamp('updated_at')->nullable()->after('created_at');
-            }
+        Schema::table('trade_messages', function (Blueprint $table) {
+            $table->string('image')->nullable()->after('content');
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -28,8 +25,8 @@ class AddUpdatedAtToOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('updated_at');
+        Schema::table('trade_messages', function (Blueprint $table) {
+            $table->dropColumn('image');
         });
     }
 }

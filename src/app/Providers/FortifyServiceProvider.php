@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Hash;
 
+use Laravel\Fortify\Contracts\RegisterResponse;
+use App\Http\Responses\RegisterResponse as CustomRegisterResponse;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Http\Requests\LoginRequest as CustomLoginRequest;
 
@@ -32,10 +34,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // 登録時の処理
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::registerView(function () {
             return view('auth.register');
         });
+        $this->app->singleton(RegisterResponse::class, CustomRegisterResponse::class);
         Fortify::loginView(function () {
             return view('auth.login');
         });

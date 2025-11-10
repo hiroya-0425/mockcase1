@@ -29,7 +29,7 @@ main {
     padding: 0 20px;
 }
 .register__form-heading {
-    margin-top: 60px;
+    margin-top: 40px;
     text-align: center;
 }
 .register__form-heading h2 {
@@ -71,7 +71,7 @@ main {
 
 .form__button {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .form__button-submit {

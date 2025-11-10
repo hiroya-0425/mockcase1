@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Item;
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Item;
+
 class ProfileController extends Controller
 {
-    //
     public function showEdit()
     {
         $user = auth()->user();
@@ -23,35 +22,64 @@ class ProfileController extends Controller
             'building' => ['nullable', 'string'],
             'image'    => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'], // 5MB & webp許可
         ]);
-
         $user = Auth::user();
-
         if ($request->hasFile('image')) {
             if ($user->image && \Storage::disk('public')->exists($user->image)) {
                 \Storage::disk('public')->delete($user->image);
             }
             $validated['image'] = $request->file('image')->store('profile', 'public');
         }
-
         $user->update($validated);
-
-        // 編集画面に戻って “保存後の画像” をそのまま表示したいなら edit に戻る
         return redirect()->route('profile.show');
-        // マイページに飛ばしたいなら:
-        // return redirect('/mypage')->with('success','プロフィールを更新しました');
     }
 
     public function showProfile()
     {
         $user = auth()->user();
+        $page = request('page');
+        $totalUnread = 0;
 
-        // クエリパラメータによって表示商品を切り替え
-        if (request('page') === 'buy') {
+        // 🔹 取引中アイテムを取得（出品者・購入者両方）
+        $tradingItems = \App\Models\Item::where('status', 'trading')
+            ->where(function ($q) use ($user) {
+                $q->where('user_id', $user->id) // 出品者側
+                    ->orWhereHas('order', fn($q2) => $q2->where('user_id', $user->id)); // 購入者側
+            })
+            ->with(['order.tradeMessages'])
+            ->get();
+
+        // 🔹 相手からの未読のみカウント
+        $totalUnread = $tradingItems->sum(function ($item) use ($user) {
+            if (!$item->order) return 0;
+            return $item->order->tradeMessages
+                ->where('user_id', '!=', $user->id) // 自分以外
+                ->where('is_read', false)           // 未読
+                ->count();
+        });
+
+        // 🔹 ページごとのデータ
+        if ($page === 'buy') {
             $items = $user->orders()->with('item')->get()->pluck('item');
-        } else {
+        } elseif ($page === 'sell') {
+            $items = $user->items()->latest()->get();
+        } elseif ($page === 'trading') {
+            $items = Item::where('status', 'trading')
+                ->where(function ($q) use ($user) {
+                    $q->where('user_id', $user->id)
+                        ->orWhereHas('order', fn($q2) => $q2->where('user_id', $user->id));
+                })
+                ->where(function ($q) use ($user) {
+                    $q->whereHas('order', function ($query) use ($user) {
+                        $query->whereDoesntHave('ratings', fn($q) => $q->where('rater_id', $user->id));
+                    })
+                        ->orWhereDoesntHave('order'); // ← Orderが無いitemも拾う
+                })
+                ->with(['order.tradeMessages'])
+                ->get();
+        }else {
             $items = $user->items()->latest()->get();
         }
 
-        return view('profile.show', compact('user', 'items'));
+        return view('profile.show', compact('user', 'items', 'totalUnread'));
     }
 }

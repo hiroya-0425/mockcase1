@@ -1,0 +1,410 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ======== 全体レイアウト ======== */
+.trade {
+    display: flex;
+    width: 99vw;
+    height: 90vh;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* ======== サイドバー ======== */
+.trade__sidebar {
+    width: 240px;
+    background-color: #a3a3a3;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.trade__other {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.trade__sidebar-list {
+    display: flex;
+    margin: 0 10px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trade__sidebar-item {
+    display: block;
+    padding: 10px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: #333;
+    transition: background 0.2s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.trade__sidebar-item:hover {
+    background: #eaeaea;
+}
+
+/* ======== メイン ======== */
+.trade__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 90vh;
+    /* ← 全画面の高さ確保 */
+    overflow: hidden;
+    /* ← 内部スクロールに切り替える */
+}
+
+.trade__user-info {
+    display: flex;
+    align-items: center;
+}
+
+/* ヘッダー */
+.trade__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: #ccc solid 2px;
+    padding-right: 30px;
+}
+.trade__user-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ccc;
+    margin-left: 20px;
+}
+
+.trade__user-name {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+/* 取引完了ボタン */
+.trade__complete {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.trade__complete:hover {
+    opacity: 0.8;
+}
+
+/* ======== 商品情報 ======== */
+.trade__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.trade__item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    padding: 0 20px;
+}
+
+.trade__item-detail {
+    flex: 1;
+}
+
+.trade__item-text {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* ======== メッセージエリア ======== */
+.trade__messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    /* ← スクロール可能に */
+    padding-right: 10px;
+    /* ← スクロールバーと被らないように */
+    scroll-behavior: smooth;
+    /* ← 自然なスクロール */
+}
+
+/* メッセージ共通 */
+.message {
+    display: inline-block;
+    max-width: 65%;
+    padding: 10px 16px;
+    border-radius: 14px;
+    word-break: break-word;
+    font-size: 15px;
+}
+
+.message__block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20px;
+    padding-right: 60px;
+}
+
+.message__block.mine {
+    align-items: flex-end;
+}
+.message__block.mine .message__actions {
+    justify-content: flex-end;
+    /* 吹き出し右下に寄せる */
+}
+
+/* 自分のメッセージ */
+.message.mine {
+    align-self: flex-end;
+    background-color: #d9d9d9;
+    border-top-right-radius: 0;
+    text-align: left;
+}
+
+.message.other {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    border-top-left-radius: 0;
+}
+
+.message__user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.message__user.mine {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+/* 相手（左側） */
+.message__user:not(.mine) {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* 自分（右側） */
+.message__user.mine {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+
+/* ユーザー名 */
+.message__user-name {
+    font-size: 12px;
+    color: #000;
+
+}
+
+.message__user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ccc;
+    /* 画像がない場合の背景色 */
+}
+
+/* 画像メッセージ */
+.message__image {
+    max-width: 200px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+/* 編集・削除 */
+.message__actions {
+    margin-top: 4px;
+    gap: 8px;
+    justify-content: flex-end;
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    width: auto;
+    max-width: 65%;
+}
+
+.message__actions form {
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.message__actions button {
+    font-size: 12px;
+    color: #ccc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    display: inline-flex;
+    /* ← inline-blockよりズレない */
+    align-items: flex-end;
+    vertical-align: bottom;
+    /* ← 最後の保険！ */
+}
+
+.message__actions button:hover {
+    text-decoration: underline;
+}
+
+/* ======== 入力フォーム ======== */
+.trade__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    position: sticky;
+    padding: 0 20px;
+}
+
+.trade__input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.trade__input-group input[type="text"] {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.trade__image-button {
+    background-color: #eee;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.trade__form button[type="submit"] {
+    background: none;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ======== 評価モーダル ======== */
+.rating__modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.rating__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #ffffc0;
+    border-radius: 12px;
+    width: 360px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%);
+    border: #a3a3a3 solid 1px;
+    max-width: 90%;
+}
+
+.rating__header {
+    padding: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: #a3a3a3 solid 1px;
+}
+
+.rating__text {
+    color: #a3a3a3;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* 星評価 */
+.rating__stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 28px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-bottom: #a3a3a3 solid 1px;
+    padding-bottom: 10px;
+    flex-direction: row-reverse;
+}
+
+.rating__stars input {
+    display: none;
+}
+
+.rating__stars label {
+    color: #ccc;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+/* ★クリックで色をつける */
+.rating__stars input:checked~label,
+.rating__stars label:hover,
+.rating__stars label:hover~label {
+    color: #f5c518;
+}
+.rating__content form {
+    text-align: right;
+    padding: 0 10px;
+}
+
+/* 送信ボタン */
+.rating__submit {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: right;
+}
+
+.rating__submit:hover {
+    opacity: 0.9;
+}

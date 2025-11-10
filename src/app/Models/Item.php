@@ -18,9 +18,10 @@ class Item extends Model
         'image',
         'condition',
         'color',
+        'status'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class,  'user_id');
     }
@@ -30,9 +31,9 @@ class Item extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function orders()
+    public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasOne(Order::class);
     }
 
     public function favorites()
@@ -47,7 +48,7 @@ class Item extends Model
 
     public function getIsSoldAttribute()
     {
-        return $this->orders()->exists();
+        return $this->order()->exists();
     }
 
 }

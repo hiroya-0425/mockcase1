@@ -3,10 +3,8 @@
 @section('content')
 <main class="item__create">
     <h2 class="item__create-title">商品の出品</h2>
-
     <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data" class="item-create__form">
         @csrf
-
         {{-- 商品画像 --}}
         <div class="form__group">
             <label class="form__label">商品画像</label>
@@ -21,11 +19,9 @@
                 <img id="previewImg" src="" alt="" style="max-width: 200px; display: none; border: 1px solid #ccc; padding: 5px;">
             </div>
         </div>
-
         {{-- 商品の詳細 --}}
         <div class="form__section">
             <h3 class="form__section-title">商品の詳細</h3>
-
             {{-- カテゴリー --}}
             <div class="form__group">
                 <label class="form__label">カテゴリー</label>
@@ -42,7 +38,6 @@
                 <div class="form__error">{{ $message }}</div>
                 @enderror
             </div>
-
             {{-- 商品の状態 --}}
             <div class="form__group">
                 <label class="form__label">商品の状態</label>
@@ -58,7 +53,6 @@
                 @enderror
             </div>
         </div>
-
         {{-- 商品名と説明 --}}
         <div class="form__section">
             <h3 class="form__section-title">商品名と説明</h3>
@@ -69,7 +63,6 @@
                 <div class="form__error">{{ $message }}</div>
                 @enderror
             </div>
-
             <div class="form__group">
                 <label class="form__label">ブランド名</label>
                 <input type="text" name="brand" class="form__input" value="{{ old('brand') }}">
@@ -77,7 +70,6 @@
                 <div class="form__error">{{ $message }}</div>
                 @enderror
             </div>
-
             <div class="form__group">
                 <label class="form__label">商品の説明</label>
                 <textarea name="description" class="form__textarea">{{ old('description') }}</textarea>
@@ -85,7 +77,6 @@
                 <div class="form__error">{{ $message }}</div>
                 @enderror
             </div>
-
             <div class="form__group">
                 <label class="form__label">販売価格</label>
                 <div class="form__price-wrapper">
@@ -97,7 +88,6 @@
                 @enderror
             </div>
         </div>
-
         {{-- 出品ボタン --}}
         <div class="form__button">
             <button type="submit" class="form__submit">出品する</button>

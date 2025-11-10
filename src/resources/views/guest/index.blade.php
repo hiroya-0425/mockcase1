@@ -18,7 +18,6 @@
             @continue
             @endif
             @endauth
-
             <a href="{{ route('items.showItem', $item->id) }}" class="item__card">
                 <div class="item__image" style="position: relative;">
                     @if(Str::startsWith($item->image, 'http'))
