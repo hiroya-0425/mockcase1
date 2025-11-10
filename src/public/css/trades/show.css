@@ -146,11 +146,8 @@ body {
     flex-direction: column;
     gap: 12px;
     overflow-y: auto;
-    /* ← スクロール可能に */
     padding-right: 10px;
-    /* ← スクロールバーと被らないように */
     scroll-behavior: smooth;
-    /* ← 自然なスクロール */
 }
 
 /* メッセージ共通 */
@@ -176,7 +173,6 @@ body {
 }
 .message__block.mine .message__actions {
     justify-content: flex-end;
-    /* 吹き出し右下に寄せる */
 }
 
 /* 自分のメッセージ */
@@ -231,7 +227,6 @@ body {
     border-radius: 50%;
     object-fit: cover;
     background-color: #ccc;
-    /* 画像がない場合の背景色 */
 }
 
 /* 画像メッセージ */
@@ -270,10 +265,8 @@ body {
     margin: 0;
     line-height: 1;
     display: inline-flex;
-    /* ← inline-blockよりズレない */
     align-items: flex-end;
     vertical-align: bottom;
-    /* ← 最後の保険！ */
 }
 
 .message__actions button:hover {

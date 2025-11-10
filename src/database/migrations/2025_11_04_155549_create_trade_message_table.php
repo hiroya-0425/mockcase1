@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrateTradeMessageTable extends Migration
+class CreateTradeMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,6 +18,7 @@ class CrateTradeMessageTable extends Migration
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('content');
+            $table->string('image')->nullable();
             $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class CrateTradeMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trade_messages');
+        Schema::dropIfExists('trade_message');
     }
 }

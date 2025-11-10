@@ -25,6 +25,7 @@ class CreateItemsTable extends Migration
             $table->string('condition');
             $table->string('color')->nullable();
             $table->boolean('is_sold')->default(false);
+            $table->string('status')->default('listed');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
