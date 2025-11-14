@@ -4,7 +4,23 @@ body {
     margin: 0;
     padding: 0;
 }
+.header {
+    background-color: #000;
+    padding: 10px 15px;
+}
 
+.header__inner {
+    display: flex;
+    align-items: center;
+}
+
+.header__inner-logo {
+    margin: 0;
+}
+
+.header__inner-image {
+    height: 24px;
+}
 /* ======== 全体レイアウト ======== */
 .trade {
     display: flex;
@@ -126,8 +142,7 @@ body {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border-radius: 6px;
-    padding: 0 20px;
+    margin-left: 20px;
 }
 
 .trade__item-detail {
@@ -400,4 +415,26 @@ body {
 
 .rating__submit:hover {
     opacity: 0.9;
+}
+
+.error-text{
+    color: red;
+}
+
+.message__edit-input {
+    width: 70%;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.message__update-btn {
+    margin-left: 6px;
+    background-color: #a3a3a3;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
 }

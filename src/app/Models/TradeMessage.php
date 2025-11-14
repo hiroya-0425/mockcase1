@@ -13,6 +13,8 @@ class TradeMessage extends Model
         'order_id',
         'user_id',
         'content',
+        'image',
+        'is_read',
     ];
 
     // 🔹 メッセージは1つの注文(order)に属する

@@ -16,7 +16,7 @@ class TradeMessageRequest extends FormRequest
     {
         return [
             'message' => 'required|string|max:400',
-            'image'   => 'nullable|image|mimes:jpeg,png|max:5120', // 5MB上限（任意）
+            'image'   => 'nullable|image|mimes:jpeg,png|max:5120',
         ];
     }
 

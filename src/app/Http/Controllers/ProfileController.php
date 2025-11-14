@@ -72,10 +72,20 @@ class ProfileController extends Controller
                     $q->whereHas('order', function ($query) use ($user) {
                         $query->whereDoesntHave('ratings', fn($q) => $q->where('rater_id', $user->id));
                     })
-                        ->orWhereDoesntHave('order'); // ← Orderが無いitemも拾う
+                        ->orWhereDoesntHave('order');
                 })
-                ->with(['order.tradeMessages'])
-                ->get();
+                ->with(['order.tradeMessages' => function ($query) {
+                    $query->latest(); // 🔹 各取引内でメッセージを新しい順に
+                }])
+                ->get()
+                ->sortByDesc(function ($item) {
+                    // 🔹 最新のメッセージを取得（あればその日時、なければ null）
+                    if ($item->order && $item->order->tradeMessages->isNotEmpty()) {
+                        return $item->order->tradeMessages->first()->created_at;
+                    }
+                    return null;
+                })
+                ->values();
         }else {
             $items = $user->items()->latest()->get();
         }
